@@ -51,11 +51,11 @@ def chatbot_page():
     if user_input:
         if user_input.lower() == "quit":
             st.session_state.chat_history.append(("You", user_input))
-            st.session_state.chat_history.append(("Bot", "Goodbye! Stay curious! 👋"))
+            st.session_state.chat_history.append(("EduBot", "Goodbye! Stay curious! 👋"))
         else:
             reply = get_best_match(user_input, qa_dict)
             st.session_state.chat_history.append(("You", user_input))
-            st.session_state.chat_history.append(("Bot", reply))
+            st.session_state.chat_history.append(("EduBot", reply))
 
     # Chat history display
     for speaker, message in st.session_state.chat_history:
