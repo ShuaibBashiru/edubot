@@ -3,7 +3,7 @@ import pandas as pd
 from rapidfuzz import process, fuzz
 
 # ---------- Streamlit Page Settings ----------
-st.set_page_config(page_title="EduBot", page_icon="🎓", layout="centered")
+st.set_page_config(page_title="Yabatech EduBot", page_icon="🎓", layout="centered")
 
 # ---------- Session Initialization ----------
 if "page" not in st.session_state:
@@ -30,7 +30,7 @@ def welcome_page():
     st.image("assets/logo.jpg", width=100)
     st.subheader("Your Digital Leaning Assistant")
     st.markdown("""
-        🚀 **EduBot helps you with:**
+        🚀 **Yabatech EduBot helps you with:**
         - School admissions and processes  
         - Course guidance and academic support  
         - FAQs about payments, hostels, resumption, etc.  
@@ -39,14 +39,20 @@ def welcome_page():
     """)
     if st.button("Start Chatbot 💬"):
         st.session_state.page = "chatbot"
+        st.rerun()
 
 # ---------- Chatbot Page ----------
 def chatbot_page():
     qa_dict = load_kb()
-    st.title("EduBot")
+    col1, col2 = st.columns([1, 12])
+    with col1:
+        st.image("assets/logo.jpg", width=50)
+    with col2:
+        st.markdown("<h1 style='padding-top: 5px;'>Yabatech EduBot</h1>", unsafe_allow_html=True)
+
     st.caption("Ask your question below:")
 
-    user_input = st.text_input("You:", key="user_input")
+    user_input = st.text_input("You:", key="user_input", placeholder="Type your question here...")
 
     if user_input:
         if user_input.lower() == "quit":
@@ -64,6 +70,7 @@ def chatbot_page():
 
     if st.button("🔙 Return Home"):
         st.session_state.page = "welcome"
+        st.rerun()
 
 # ---------- Router ----------
 if st.session_state.page == "welcome":
