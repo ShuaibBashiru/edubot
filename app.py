@@ -27,7 +27,7 @@ def get_best_match(question, kb, threshold=70):
 # ---------- Welcome Page ----------
 def welcome_page():
     st.markdown("### 🎓 Welcome to Yabatech EduBot")
-    st.image("assets/yctlogo.jpg", width=100)
+    st.image("assets/logo.jpg", width=100)
     st.subheader("Your Digital Leaning Assistant")
     st.markdown("""
         🚀 **EduBot helps you with:**
